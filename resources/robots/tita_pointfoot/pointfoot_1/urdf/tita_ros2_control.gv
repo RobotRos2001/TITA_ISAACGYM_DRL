@@ -1,0 +1,35 @@
+digraph G {
+node [shape=box];
+"base_link" [label="base_link"];
+"left_leg_1" [label="left_leg_1"];
+"left_leg_2" [label="left_leg_2"];
+"left_leg_3" [label="left_leg_3"];
+"left_leg_4" [label="left_leg_4"];
+"contact_L_Link" [label="contact_L_Link"];
+"right_leg_1" [label="right_leg_1"];
+"right_leg_2" [label="right_leg_2"];
+"right_leg_3" [label="right_leg_3"];
+"right_leg_4" [label="right_leg_4"];
+"contact_R_Link" [label="contact_R_Link"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"base_link" -> "joint_left_leg_1" [label="xyz: 0 0.0895 0 \nrpy: 1.5708 -0 1.5708"]
+"joint_left_leg_1" -> "left_leg_1"
+"left_leg_1" -> "joint_left_leg_2" [label="xyz: 0.1426 0 0 \nrpy: -1.5708 -0 -1.5708"]
+"joint_left_leg_2" -> "left_leg_2"
+"left_leg_2" -> "joint_left_leg_3" [label="xyz: 0.2 0 0 \nrpy: 0 -0 0"]
+"joint_left_leg_3" -> "left_leg_3"
+"left_leg_3" -> "joint_left_leg_4" [label="xyz: 0.2 0 0 \nrpy: 0 -0 0"]
+"joint_left_leg_4" -> "left_leg_4"
+"left_leg_4" -> "contact_L_Joint" [label="xyz: 0 0 -0.03 \nrpy: 0 -0 0"]
+"contact_L_Joint" -> "contact_L_Link"
+"base_link" -> "joint_right_leg_1" [label="xyz: 0 -0.0895 0 \nrpy: 1.5708 -0 1.5708"]
+"joint_right_leg_1" -> "right_leg_1"
+"right_leg_1" -> "joint_right_leg_2" [label="xyz: -0.1426 0 0 \nrpy: -1.5708 -0 -1.5708"]
+"joint_right_leg_2" -> "right_leg_2"
+"right_leg_2" -> "joint_right_leg_3" [label="xyz: 0.2 0 0 \nrpy: 0 -0 0"]
+"joint_right_leg_3" -> "right_leg_3"
+"right_leg_3" -> "joint_right_leg_4" [label="xyz: 0.2 0 0 \nrpy: 0 -0 0"]
+"joint_right_leg_4" -> "right_leg_4"
+"right_leg_4" -> "contact_R_Joint" [label="xyz: 0 0 -0.03 \nrpy: 0 -0 0"]
+"contact_R_Joint" -> "contact_R_Link"
+}

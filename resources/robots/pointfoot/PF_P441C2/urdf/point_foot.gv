@@ -1,0 +1,38 @@
+digraph G {
+node [shape=box];
+"base_Link" [label="base_Link"];
+"abad_L_Link" [label="abad_L_Link"];
+"hip_L_Link" [label="hip_L_Link"];
+"knee_L_Link" [label="knee_L_Link"];
+"foot_L_Link" [label="foot_L_Link"];
+"contact_L_Link" [label="contact_L_Link"];
+"abad_R_Link" [label="abad_R_Link"];
+"hip_R_Link" [label="hip_R_Link"];
+"knee_R_Link" [label="knee_R_Link"];
+"foot_R_Link" [label="foot_R_Link"];
+"contact_R_Link" [label="contact_R_Link"];
+"limx_imu" [label="limx_imu"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"base_Link" -> "abad_L_Joint" [label="xyz: 0.01241 0.10494 -0.09876 \nrpy: 0 -0 0"]
+"abad_L_Joint" -> "abad_L_Link"
+"abad_L_Link" -> "hip_L_Joint" [label="xyz: -0.07696 0.02066 0 \nrpy: 0 -0 0"]
+"hip_L_Joint" -> "hip_L_Link"
+"hip_L_Link" -> "knee_L_Joint" [label="xyz: -0.15004 -0.02018 -0.25981 \nrpy: 0 -0 0"]
+"knee_L_Joint" -> "knee_L_Link"
+"knee_L_Link" -> "foot_L_Joint" [label="xyz: 0.15 0 -0.25981 \nrpy: 0 -0 0"]
+"foot_L_Joint" -> "foot_L_Link"
+"foot_L_Link" -> "contact_L_Joint" [label="xyz: 0 0 -0.03 \nrpy: 0 -0 0"]
+"contact_L_Joint" -> "contact_L_Link"
+"base_Link" -> "abad_R_Joint" [label="xyz: 0.01241 -0.10494 -0.09876 \nrpy: 0 -0 0"]
+"abad_R_Joint" -> "abad_R_Link"
+"abad_R_Link" -> "hip_R_Joint" [label="xyz: -0.07696 -0.02066 0 \nrpy: 0 -0 0"]
+"hip_R_Joint" -> "hip_R_Link"
+"hip_R_Link" -> "knee_R_Joint" [label="xyz: -0.15004 0.02018 -0.25981 \nrpy: 0 -0 0"]
+"knee_R_Joint" -> "knee_R_Link"
+"knee_R_Link" -> "foot_R_Joint" [label="xyz: 0.15 0 -0.25981 \nrpy: 0 -0 0"]
+"foot_R_Joint" -> "foot_R_Link"
+"foot_R_Link" -> "contact_R_Joint" [label="xyz: 0 0 -0.03 \nrpy: 0 -0 0"]
+"contact_R_Joint" -> "contact_R_Link"
+"base_Link" -> "limx_imu_joint" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"limx_imu_joint" -> "limx_imu"
+}

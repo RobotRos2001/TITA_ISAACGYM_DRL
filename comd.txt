@@ -1,0 +1,5 @@
+python export_policy_as_onnx.py --task=tita_pointfoot_rough --load_run=Oct25_23-46-28_ --checkpoint=39000
+
+tensorboard --logdir=logs/tita_pointfoot_rough
+
+python play.py --task=tita_pointfoot_rough --checkpoint=15000
