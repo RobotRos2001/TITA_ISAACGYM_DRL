@@ -73,23 +73,23 @@ class TITAPointFootRoughCfg(BaseConfig):
             # heading = [0, 0]
 
     class init_state:
-        pos = [0.0, 0.0, 0.4]  # x,y,z [m]
+        pos = [0.0, 0.0, 0.34]  # x,y,z [m]
         rot = [0.0, 0.0, 0.0, 1.0]  # x,y,z,w [quat]
         lin_vel = [0.0, 0.0, 0.0]  # x,y,z [m/s]
         ang_vel = [0.0, 0.0, 0.0]  # x,y,z [rad/s]
         default_joint_angles = {  # target angles when action = 0.0
-            "joint_left_leg_1": -0.27,
-            "joint_right_leg_1": 0.27,
-            "joint_left_leg_2": 0.28,
-            "joint_right_leg_2": 0.28,
-            "joint_left_leg_3": -0.73,
-            "joint_right_leg_3": -0.73,
-            # "joint_left_leg_1": -0.2,
-            # "joint_left_leg_2": 0.58,
-            # "joint_left_leg_3": -1.3,
-            # "joint_right_leg_1": 0.2,
-            # "joint_right_leg_2": 0.58,
-            # "joint_right_leg_3": -1.3,
+            "joint_left_leg_1": -0.55,
+            "joint_right_leg_1": 0.55,
+            "joint_left_leg_2": 1.3,
+            "joint_right_leg_2": 1.3,
+            "joint_left_leg_3": -2.1,
+            "joint_right_leg_3": -2.1,
+            # "joint_left_leg_1": -0.27,
+            # "joint_right_leg_1": 0.27,
+            # "joint_left_leg_2": 0.28,
+            # "joint_right_leg_2": 0.28,
+            # "joint_left_leg_3": -0.73,
+            # "joint_right_leg_3": -0.73,
         }
 
     class control:
@@ -135,14 +135,14 @@ class TITAPointFootRoughCfg(BaseConfig):
         )
         name = robot_type
         foot_name = "_leg_4"
-        terminate_after_contacts_on = ["base_link"]
+        terminate_after_contacts_on = ["base_link", "_leg_3"]
         penalize_contacts_on = ["base_link", "_leg_3"]
         disable_gravity = False
         collapse_fixed_joints = False  # merge bodies connected by fixed joints. Specific fixed joints can be kept by adding " <... dont_collapse="true">
         fix_base_link = False  # fixe the base of the robot
         default_dof_drive_mode = 3  # see GymDofDriveModeFlags (0 is none, 1 is pos tgt, 2 is vel tgt, 3 effort)
         self_collisions = 0  # 1 to disable, 0 to enable...bitwise filter
-        replace_cylinder_with_capsule = True  # replace collision cylinders with capsules, leads to faster/more stable simulation
+        replace_cylinder_with_capsule = False  # replace collision cylinders with capsules, leads to faster/more stable simulation
         flip_visual_attachments = (
             False  # Some .obj meshes must be flipped from y-up to z-up
         )
@@ -204,7 +204,7 @@ class TITAPointFootRoughCfg(BaseConfig):
         only_positive_rewards = False  # if true negative total rewards are clipped at zero (avoids early termination problems)
         min_feet_distance = 0.08
         
-        min_feet_air_time = 0.3
+        min_feet_air_time = 0.5
         max_feet_air_time = 0.8
         tracking_sigma = 0.25  # tracking reward = exp(-error^2/sigma)
 
