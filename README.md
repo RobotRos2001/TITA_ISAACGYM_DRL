@@ -1,56 +1,23 @@
-# Isaac Gym Environments for Legged Robots #
-This repository provides the environment used to train ANYmal (and other robots) to walk on rough terrain using NVIDIA's Isaac Gym.
-It includes all components needed for sim-to-real transfer: actuator network, friction & mass randomization, noisy observations and random pushes during training.  
-
-**Maintainer**: Nikita Rudin  
-**Affiliation**: Robotic Systems Lab, ETH Zurich  
-**Contact**: rudinn@ethz.ch  
-
+# TITA(点足)isaac_gym强化学习#
+**Contact**: 1692931357@qq.com
 ---
 
-### :bell: Announcement (09.01.2024) ###
+## Prerequisites
 
-With the shift from Isaac Gym to Isaac Sim at NVIDIA, we have migrated all the environments from this work to [Orbit](https://github.com/NVIDIA-Omniverse/Orbit). Following this migration, this repository will receive limited updates and support. We encourage all users to migrate to the new framework for their applications.
-
-Information about this work's locomotion-related tasks in Orbit is available [here](https://isaac-orbit.github.io/orbit/source/features/environments.html#locomotion).
+- **Operating System**: Ubuntu 22.04
+- **isaac_gym**
+- **legged_gym**
 
 ---
 
 ### Useful Links ###
 
-Project website: https://leggedrobotics.github.io/legged_gym/   
-Paper: https://arxiv.org/abs/2109.11978
+使用教程: https://leggedrobotics.github.io/legged_gym/   
 
-### Installation ###
-1. Create a new python virtual env with python 3.6, 3.7 or 3.8 (3.8 recommended)
-2. Install pytorch 1.10 with cuda-11.3:
-    - `pip3 install torch==1.10.0+cu113 torchvision==0.11.1+cu113 torchaudio==0.10.0+cu113 -f https://download.pytorch.org/whl/cu113/torch_stable.html`
-3. Install Isaac Gym
-   - Download and install Isaac Gym Preview 3 (Preview 2 will not work!) from https://developer.nvidia.com/isaac-gym
-   - `cd isaacgym/python && pip install -e .`
-   - Adapt to latest numpy`sed -i 's/np.float/float/' isaacgym/torch_utils.py`
-   - Try running an example `cd examples && python 1080_balls_of_solitude.py`
-   - For troubleshooting check docs `isaacgym/docs/index.html`)
-4. Install rsl_rl (PPO implementation)
-   - Clone https://github.com/leggedrobotics/rsl_rl
-   -  `cd rsl_rl && git checkout v1.0.2 && pip install -e .` 
-5. Install legged_gym
-    - Clone this repository
-   - `cd legged_gym && pip install -e .`
-6. Install tensorboard
-   - `pip install tensorboard`
-7. Install setuptools 
-   - `pip install setuptools==59.5.0`
-
-### CODE STRUCTURE ###
-1. Each environment is defined by an env file (`legged_robot.py`) and a config file (`legged_robot_config.py`). The config file contains two classes: one containing  all the environment parameters (`LeggedRobotCfg`) and one for the training parameters (`LeggedRobotCfgPPo`).  
-2. Both env and config classes use inheritance.  
-3. Each non-zero reward scale specified in `cfg` will add a function with a corresponding name to the list of elements which will be summed to get the total reward.  
-4. Tasks must be registered using `task_registry.register(name, EnvClass, EnvConfig, TrainConfig)`. This is done in `envs/__init__.py`, but can also be done from outside of this repository.  
 
 ### Usage ###
 1. Train:  
-  ```python legged_gym/scripts/train.py --task=pointfoot_rough```
+  ```python legged_gym/scripts/train.py --task=tita_pointfoot_rough```
     -  To run on CPU add following arguments: `--sim_device=cpu`, `--rl_device=cpu` (sim on CPU and rl on GPU is possible).
     -  To run headless (no rendering) add `--headless`.
     - **Important**: To improve performance, once the training starts press `v` to stop the rendering. You can then enable it later to check the progress.
@@ -113,3 +80,4 @@ The base environment `legged_robot` implements a rough terrain locomotion task. 
     self.gym.refresh_force_sensor_tensor(self.sim)
     contact = self.sensor_forces[:, :, 2] > 1.
 ```
+# RobotRos2001
